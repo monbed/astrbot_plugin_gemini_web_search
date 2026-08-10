@@ -1,0 +1,70 @@
+{
+    "direct_settings": {
+        "type": "object",
+        "description": "API 设置",
+        "hint": "配置 Gemini API 连接参数",
+        "items": {
+            "api_key": {
+                "description": "Gemini API 密钥列表",
+                "type": "list",
+                "hint": "支持多个 Key，按顺序轮询",
+                "default": []
+            },
+            "api_base_url": {
+                "description": "Gemini API 基础 URL",
+                "type": "string",
+                "hint": "默认为官方地址，也可填写兼容 Gemini 原生格式的反代地址",
+                "default": "https://generativelanguage.googleapis.com"
+            },
+            "model": {
+                "description": "搜索模型",
+                "type": "string",
+                "hint": "用于执行联网搜索的 Gemini 模型",
+                "default": "gemini-2.5-flash"
+            }
+        }
+    },
+    "search_settings": {
+        "type": "object",
+        "description": "搜索设置",
+        "hint": "控制检索提示词",
+        "items": {
+            "custom_search_prompt": {
+                "description": "自定义检索提示词",
+                "type": "text",
+                "hint": "留空使用内置双提示词（指令版先结论后要点、工具版多角度检索附来源，均为纯文本输出）。填写后两种模式均以此为准；问题会自动追加在提示词之后，结果返回前会兜底剥离 Markdown 标记。",
+                "default": "",
+                "editor_mode": true,
+                "editor_language": "markdown"
+            }
+        }
+    },
+    "tool_settings": {
+        "type": "object",
+        "description": "工具设置",
+        "hint": "控制网页抓取工具",
+        "items": {
+            "enable_fetch": {
+                "description": "是否启用网页抓取工具 (web_fetch_gemini)",
+                "type": "bool",
+                "hint": "启用后 AI 可调用 web_fetch_gemini 抓取网页纯文本内容",
+                "default": true
+            },
+            "fetch_timeout_seconds": {
+                "description": "网络请求超时时间（秒）",
+                "type": "float",
+                "default": 20
+            },
+            "fetch_user_agent": {
+                "description": "抓取网页时的 User-Agent",
+                "type": "string",
+                "default": "Mozilla/5.0 AstrBot"
+            },
+            "fetch_max_chars": {
+                "description": "返回的最大字符数上限",
+                "type": "int",
+                "default": 20000
+            }
+        }
+    }
+}

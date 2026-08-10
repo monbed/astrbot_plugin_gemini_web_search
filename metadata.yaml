@@ -1,0 +1,6 @@
+name: astrbot_plugin_gemini_web_search
+display_name: Gemini 联网搜索
+desc: 通过 Gemini 原生 Google Search 工具进行实时联网搜索，返回要点摘要和来源链接，支持 /gemini 指令与 LLM 函数工具调用。
+version: v1.0.0
+author: monbed
+repo: https://github.com/monbed/astrbot_plugin_gemini_web_search
